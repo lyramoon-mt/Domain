@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MKR-DRAW | Official Winners & Results</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Orbitron:wght@600;800;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #090a0f;
+            --card-bg: #12151e;
+            --border-color: #232838;
+            --gold: #ffd700;
+            --neon-red: #ff2a5f;
+            --neon-cyan: #00f3ff;
+            --neon-purple: #b537f2;
+            --neon-green: #4ade80;
+            --text-main: #f0f2f8;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(255, 42, 95, 0.08), transparent 35%),
+                radial-gradient(circle at 85% 85%, rgba(0, 243, 255, 0.08), transparent 35%);
+            color: var(--text-main);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .urdu-text {
+            font-family: 'Noto Nastaliq Urdu', 'Poppins', sans-serif;
+            direction: rtl;
+            line-height: 2.05;
+        }
+
+        .roman-text {
+            color: #cbd5e1;
+            font-size: 0.94rem;
+        }
+
+        /* Top Bar & Language Switcher */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 15px 20px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .lang-switch {
+            display: flex;
+            flex-wrap: wrap;
+            background: #161a26;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            padding: 4px;
+            gap: 4px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .lang-btn.active {
+            background: var(--gold);
+            color: #000;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 30px 20px 35px;
+            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(180deg, rgba(18, 21, 30, 0.95) 0%, rgba(9, 10, 15, 0.8) 100%);
+        }
+
+        .dev-badge {
+            display: inline-block;
+            background: rgba(255, 42, 95, 0.12);
+            border: 1px solid var(--neon-red);
+            color: var(--neon-red);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            box-shadow: 0 0 15px rgba(255, 42, 95, 0.25);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            font-weight: 900;
+            letter-spacing: 3px;
+            background: linear-gradient(90deg, #ffd700, #ff8c00, #ff2a5f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 0.96rem;
+            max-width: 720px;
+            margin: 0 auto 22px;
+        }
+
+        .line-gap {
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* Search Bar */
+        .search-box {
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: #161a26;
+            color: #fff;
+            font-size: 0.95rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            outline: none;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .search-box input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 35px 20px;
+        }
+
+        /* Claim Reward CTA Banner */
+        .claim-banner {
+            background: linear-gradient(135deg, #0d261a 0%, #10192b 100%);
+            border: 2px solid var(--neon-green);
+            border-radius: 18px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 0 30px rgba(74, 222, 128, 0.15);
+        }
+
+        .claim-banner h3 {
+            color: var(--neon-green);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+
+        .claim-banner p {
+            color: #e2e8f0;
+            font-size: 0.96rem;
+            margin-bottom: 16px;
+        }
+
+        .claim-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #4ade80, #00f3ff);
+            color: #05080f;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            font-size: 0.92rem;
+            padding: 13px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(74, 222, 128, 0.35);
+            transition: transform 0.2s, box-shadow 0.2s;
+            word-break: break-all;
+        }
+
+        .claim-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 243, 255, 0.5);
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 22px;
+            color: #fff;
+            border-left: 4px solid var(--gold);
+            padding-left: 14px;
+        }
+
+        /* Grand Winner Spotlight */
+        .grand-winner {
+            background: linear-gradient(135deg, #1d180a 0%, #141722 60%, #1f1219 100%);
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            margin-bottom: 45px;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.15);
+        }
+
+        .grand-badge {
+            background: var(--gold);
+            color: #000;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 0.82rem;
+            padding: 5px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .grand-id {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .grand-prize {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 10px;
+        }
+
+        .grand-prize span {
+            color: var(--gold);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Millionaire Grid */
+        .winners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .winner-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .winner-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-cyan);
+        }
+
+        .rank-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--neon-cyan);
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .winner-id {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .winner-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .winner-desc strong {
+            color: var(--neon-green);
+            font-size: 1.05rem;
+        }
+
+        /* 50K Winners Section */
+        .fifty-k-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 28px;
+            margin-bottom: 50px;
+        }
+
+        .fifty-k-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .prize-pill {
+            background: rgba(74, 222, 128, 0.15);
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .id-chips {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .chip {
+            background: #1a1f2e;
+            border: 1px solid #2d354d;
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            transition: 0.2s;
+        }
+
+        .chip:hover {
+            border-color: var(--neon-green);
+            color: var(--neon-green);
+            background: #1f2937;
+        }
+
+        .chip small {
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.72rem;
+            color: var(--neon-green);
+            margin-top: 3px;
+            font-weight: 500;
+        }
+
+        /* Special Executive Offer Section */
+        .special-offer {
+            background: linear-gradient(145deg, #161124 0%, #121622 100%);
+            border: 2px solid var(--neon-purple);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 45px;
+            box-shadow: 0 10px 35px rgba(181, 55, 242, 0.15);
+        }
+
+        .offer-ids {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 10px 0 20px;
+        }
+
+        .offer-id-badge {
+            background: var(--neon-purple);
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            padding: 8px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(181, 55, 242, 0.4);
+        }
+
+        .offer-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #e9d5ff;
+            margin-bottom: 18px;
+        }
+
+        .offer-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 16px;
+        }
+
+        .option-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(181, 55, 242, 0.35);
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .option-box h4 {
+            color: var(--neon-cyan);
+            margin-bottom: 10px;
+            font-size: 0.98rem;
+        }
+
+        .option-box p {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Consolation Banner */
+        .consolation-banner {
+            background: linear-gradient(90deg, rgba(0, 243, 255, 0.08), rgba(255, 42, 95, 0.08));
+            border: 1px dashed var(--neon-cyan);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .consolation-banner h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-cyan);
+            margin-bottom: 10px;
+            font-size: 1.12rem;
+        }
+
+        .consolation-banner p {
+            font-size: 0.98rem;
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            background: #07080c;
+        }
+
+        footer strong {
+            color: var(--neon-red);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        footer a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .highlight {
+            outline: 2px solid var(--gold) !important;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.5) !important;
+            transform: scale(1.03);
+        }
+
+        /* Filter modes: All 3, English, Roman English, Urdu */
+        body.mode-en .lang-ro,
+        body.mode-en .lang-ur { display: none; }
+
+        body.mode-ro .lang-en,
+        body.mode-ro .lang-ur { display: none; }
+
+        body.mode-ur .lang-en,
+        body.mode-ur .lang-ro { display: none; }
+    </style>
+</head>
+<body class="mode-all">
+
+    <div class="top-bar">
+        <span style="font-size: 0.8rem; color: var(--text-muted);">🌐 Trilingual Portal (English • Roman English • اردو)</span>
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="setLang('all', this)">All 3 / سب</button>
+            <button class="lang-btn" onclick="setLang('en', this)">English</button>
+            <button class="lang-btn" onclick="setLang('ro', this)">Roman English</button>
+            <button class="lang-btn" onclick="setLang('ur', this)">اردو</button>
+        </div>
+    </div>
+
+    <header>
+        <div class="dev-badge">CREATED BY DEVIL DEVELOPER</div>
+        <h1>MKR-DRAW</h1>
+        <p class="subtitle">
+            <span class="lang-en line-gap">Official Lucky Draw Winners Announcement, Mega Cash Prizes & Special Executive Offers</span>
+            <span class="lang-ro roman-text line-gap">MKR-DRAW ke official winners ka ailan, mega prizes aur khaas offers</span>
+            <span class="lang-ur urdu-text line-gap">آفیشل لکی ڈرا ونرز کا اعلان، میگا کیش انعامات اور خصوصی آفرز</span>
+        </p>
+        <div class="search-box">
+            <input type="text" id="idSearch" placeholder="Search ID / ID search karein / آئی ڈی تلاش کریں..." onkeyup="filterID()">
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- Claim Reward Contact CTA -->
+        <div class="claim-banner">
+            <h3>🎁 CLAIM YOUR REWARDS / REWARDS LE LO / اپنا انعام حاصل کریں</h3>
+            <p>
+                <span class="lang-en line-gap">Contact us on our official website below to verify your ID and claim your winning rewards!</span>
+                <span class="lang-ro roman-text line-gap">Is web per contact kerke apne rewards le lo!</span>
+                <span class="lang-ur urdu-text line-gap">اس ویب سائٹ پر رابطہ کر کے اپنی آئی ڈی ویریفائی کروائیں اور اپنے انعامات حاصل کریں:</span>
+            </p>
+            <a href="https://mustjab-king-lyra.hf.space/" target="_blank" rel="noopener noreferrer" class="claim-btn">
+                https://mustjab-king-lyra.hf.space/ ↗
+            </a>
+        </div>
+
+        <!-- 1st Mega Winner -->
+        <div class="grand-winner searchable" data-id="M00M1">
+            <div class="grand-badge">🏆 MEGA JACKPOT WINNER / میگا جیک پاٹ ونر 🏆</div>
+            <div class="grand-id">ID: M00M1</div>
+            <div class="grand-prize">
+                <div class="lang-en line-gap">This ID is the winner and has won <span>10 MILLION</span>!</div>
+                <div class="lang-ro roman-text line-gap" style="color:#fde68a;">ID M00M1 is winner and isne <span>10 million</span> jeet liye hai!</div>
+                <div class="lang-ur urdu-text line-gap" style="color:#fff;">آئی ڈی <strong>M00M1</strong> ونر ہے اور اس نے <span>10 ملین (10 Million)</span> جیت لیے ہیں!</div>
+            </div>
+        </div>
+
+        <!-- Top Million Winners -->
+        <h2 class="section-title">💎 Millionaire Winners / ملین انعامات جیتنے والے</h2>
+        <div class="winners-grid">
+            <div class="winner-card searchable" data-id="M00S5">
+                <span class="rank-tag">2nd Mega Prize</span>
+                <div class="winner-id">ID: M00S5</div>
+                <p class="winner-desc">
+                    <span class="lang-en line-gap">Has won <strong>5 Million</strong>!</span>
+                    <span class="lang-ro roman-text line-gap">Isne <strong>5 million</strong> jeet liye hain!</span>
+                    <span class="lang-ur urdu-text line-gap" style="color:#e2e8f0;">اس نے <strong>5 ملین</strong> جیت لیے ہیں!</span>
+                </p>
+            </div>
+
+            <div class="winner-card searchable" data-id="M0MR7">
+                <span class="rank-tag">3rd Mega Prize</span>
+                <div class="winner-id">ID: M0MR7</div>
+                <p class="winner-desc">
+                    <span class="lang-en line-gap">Has won <strong>1 Million</strong>!</span>
+                    <span class="lang-ro roman-text line-gap">Is ne <strong>1 million</strong> jeet liye hain!</span>
+                    <span class="lang-ur urdu-text line-gap" style="color:#e2e8f0;">اس نے <strong>1 ملین</strong> جیت لیے ہیں!</span>
+                </p>
+            </div>
+
+            <div class="winner-card searchable" data-id="M0MS12">
+                <span class="rank-tag">4th Mega Prize</span>
+                <div class="winner-id">ID: M0MS12</div>
+                <p class="winner-desc">
+                    <span class="lang-en line-gap">Has won <strong>0.5 Million</strong>!</span>
+                    <span class="lang-ro roman-text line-gap">Is ne <strong>0.5 million</strong> jeet liye hain!</span>
+                    <span class="lang-ur urdu-text line-gap" style="color:#e2e8f0;">اس نے <strong>0.5 ملین</strong> جیت لیے ہیں!</span>
+                </p>
+            </div>
+
+            <div class="winner-card searchable" data-id="M0SG3">
+                <span class="rank-tag">5th Mega Prize</span>
+                <div class="winner-id">ID: M0SG3</div>
+                <p class="winner-desc">
+                    <span class="lang-en line-gap">Has won <strong>0.2 Million</strong>!</span>
+                    <span class="lang-ro roman-text line-gap">Is ne <strong>0.2 million</strong> jeet liye hain!</span>
+                    <span class="lang-ur urdu-text line-gap" style="color:#e2e8f0;">اس نے <strong>0.2 ملین</strong> جیت لیے ہیں!</span>
+                </p>
+            </div>
+
+            <div class="winner-card searchable" data-id="M0NS4">
+                <span class="rank-tag">6th Mega Prize</span>
+                <div class="winner-id">ID: M0NS4</div>
+                <p class="winner-desc">
+                    <span class="lang-en line-gap">Has won <strong>0.1 Million</strong>!</span>
+                    <span class="lang-ro roman-text line-gap">Is ne <strong>0.1 million</strong> jeet liye hain!</span>
+                    <span class="lang-ur urdu-text line-gap" style="color:#e2e8f0;">اس نے <strong>0.1 ملین</strong> جیت لیے ہیں!</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- 50K Winners -->
+        <h2 class="section-title">🔥 50K Winners / 50 ہزار جیتنے والے</h2>
+        <div class="fifty-k-box">
+            <div class="fifty-k-header">
+                <div>
+                    <h3 class="lang-en line-gap" style="color:#fff;">All listed IDs below have won 50,000 (50K)!</h3>
+                    <p class="lang-ro roman-text line-gap">In ne 50k jeete hain!</p>
+                    <h3 class="lang-ur urdu-text line-gap" style="color:#fff;">ان تمام آئی ڈیز نے 50 ہزار (50K) جیتے ہیں!</h3>
+                </div>
+                <div class="prize-pill">PRIZE: 50K EACH</div>
+            </div>
+            <div class="id-chips">
+                <div class="chip searchable" data-id="M00S1">M00S1<small>Won 50K</small></div>
+                <div class="chip searchable" data-id="M00S3">M00S3<small>Won 50K</small></div>
+                <div class="chip searchable" data-id="M0045">M0045<small>Won 50K</small></div>
+                <div class="chip searchable" data-id="M00J4">M00J4<small>Won 50K</small></div>
+                <div class="chip searchable" data-id="M00Y7">M00Y7<small>Won 50K</small></div>
+                <div class="chip searchable" data-id="M00OO">M00OO<small>Won 50K</small></div>
+                <div class="chip searchable" data-id="M00KING">M00KING<small>Won 50K</small></div>
+                <div class="chip searchable" data-id="M0067">M0067<small>Won 50K</small></div>
+                <div class="chip searchable" data-id="M00Y89">M00Y89<small>Won 50K</small></div>
+                <div class="chip searchable" data-id="M00BETA">M00BETA<small>Won 50K</small></div>
+                <div class="chip searchable" data-id="MBETA">MBETA<small>Won 50K</small></div>
+                <div class="chip searchable" data-id="M00LK">M00LK<small>Won 50K</small></div>
+                <div class="chip searchable" data-id="M00MT">M00MT<small>Won 50K</small></div>
+            </div>
+        </div>
+
+        <!-- Special Executive Offer -->
+        <h2 class="section-title">👑 Special Offer / خصوصی آفر</h2>
+        <div class="special-offer searchable" data-id="M00A9 M00A5">
+            <div class="offer-ids">
+                <span class="offer-id-badge">ID: M00A9</span>
+                <span class="offer-id-badge">ID: M00A5</span>
+            </div>
+            <div class="offer-title">
+                <div class="lang-en line-gap">GETS OFFER OF FINANCE OFFICER (OR) 0.003% SHARES (OR) WEB BUNDLE</div>
+                <div class="lang-ro roman-text line-gap" style="color:#e9d5ff;">ID M00A9 or M00A5 gets offer of Finance Officer (or) 0.003% shares (or) Web Bundle</div>
+                <div class="lang-ur urdu-text line-gap" style="color:#f3e8ff;">ان آئی ڈیز کو فنانس آفیسر کی آفر، یا 0.003% شیئرز، یا ویب بنڈل ملتا ہے:</div>
+            </div>
+            
+            <div class="offer-options">
+                <div class="option-box">
+                    <h4>Option 1: Finance Officer</h4>
+                    <p>
+                        <span class="lang-en line-gap">You get <strong>20% earning</strong> based on your sale! Sell <strong>oneapp.dev</strong> to anyone for <strong>700</strong> (if sold for more, extra profit is yours), and gather users for the Paid Lucky Draw (price <strong>250</strong>, out of which <strong>50 Rs</strong> will be yours).</span>
+                        <span class="lang-ro roman-text line-gap">Mean you get <strong>20% earning</strong> baesd on your sale — her kisi ko <strong>oneapp.dev</strong> sell karo <strong>700</strong> mein, agar mengha sell kerte ho tou tumhara profit aur users ko gather karo akhta karo paid lucky draw ke liye price <strong>250</strong> jismein se <strong>50 rs</strong> tumhare hon ge.</span>
+                        <span class="lang-ur urdu-text line-gap">آپ کو اپنی سیل پر <strong>20% کمائی</strong> ملے گی! ہر کسی کو <strong>oneapp.dev</strong> <strong>700</strong> میں بیچیں (اگر مہنگا بیچیں گے تو اضافی منافع آپ کا ہوگا) اور پیڈ لکی ڈرا کے لیے یوزرز اکٹھے کریں جس کی قیمت <strong>250</strong> ہے، جس میں سے <strong>50 روپے</strong> آپ کے ہوں گے۔</span>
+                    </p>
+                </div>
+                <div class="option-box">
+                    <h4>Option 2: 0.003% Shares</h4>
+                    <p>
+                        <span class="lang-en line-gap">Get <strong>0.003% shares</strong>.</span>
+                        <span class="lang-ro roman-text line-gap">Or <strong>0.003% shares</strong>.</span>
+                        <span class="lang-ur urdu-text line-gap">یا <strong>0.003% شیئرز</strong> حاصل کریں۔</span>
+                    </p>
+                </div>
+                <div class="option-box">
+                    <h4>Option 3: Web Bundle</h4>
+                    <p>
+                        <span class="lang-en line-gap">Get the <strong>Web Bundle</strong>.</span>
+                        <span class="lang-ro roman-text line-gap">Or <strong>Web Bundle</strong>.</span>
+                        <span class="lang-ur urdu-text line-gap">یا <strong>ویب بنڈل (Web Bundle)</strong> حاصل کریں۔</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Remaining Participants -->
+        <div class="consolation-banner">
+            <h3>🎙️ Remaining Participants / باقی سب کے لیے</h3>
+            <p>
+                <span class="lang-en line-gap">Interviews will be taken from everyone else, and based on what they say, they will get <strong>Under 5K</strong>!</span>
+                <span class="lang-ro roman-text line-gap">Baqi subse interwiew le ker jo woh kahein ge <strong>under 5k</strong> mile ga!</span>
+                <span class="lang-ur urdu-text line-gap">باقی سب سے انٹرویو لے کر جو وہ کہیں گے، انہیں <strong>5 ہزار (Under 5K)</strong> کے اندر ملے گا!</span>
+            </p>
+        </div>
+
+        <!-- Bottom Claim CTA -->
+        <div class="claim-banner" style="margin-bottom: 10px;">
+            <h3>📩 Contact & Claim Rewards</h3>
+            <p>
+                <span class="lang-en line-gap">Contact on the website below to claim your rewards:</span>
+                <span class="lang-ro roman-text line-gap">Is web per contact kerke apne rewards le lo:</span>
+                <span class="lang-ur urdu-text line-gap">اپنے ریوارڈز لینے کے لیے نیچے دی گئی ویب سائٹ پر رابطہ کریں:</span>
+            </p>
+            <a href="https://mustjab-king-lyra.hf.space/" target="_blank" rel="noopener noreferrer" class="claim-btn">
+                https://mustjab-king-lyra.hf.space/
+            </a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 <strong>MKR-DRAW</strong>. All Rights Reserved.</p>
+        <p style="margin-top: 6px;">CREATED BY <strong>DEVIL DEVELOPER</strong></p>
+        <p style="margin-top: 8px;">Official Contact: <a href="https://mustjab-king-lyra.hf.space/" target="_blank">https://mustjab-king-lyra.hf.space/</a></p>
+    </footer>
+
+    <script>
+        function filterID() {
+            const query = document.getElementById('idSearch').value.trim().toUpperCase();
+            const items = document.querySelectorAll('.searchable');
+
+            items.forEach(item => {
+                item.classList.remove('highlight');
+                const idText = item.getAttribute('data-id').toUpperCase();
+                if (query !== "" && idText.includes(query)) {
+                    item.classList.add('highlight');
+                }
+            });
+        }
+
+        function setLang(mode, btn) {
+            document.body.className = 'mode-' + mode;
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
