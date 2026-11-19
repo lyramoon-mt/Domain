@@ -40,5 +40,11 @@
     "domain": "hasham.wista-project.duckdns.org",
     "status": "VERIFIED",
     "date": "2026-11-19"
+  },
+  {
+    "id": "M00A8",
+    "domain": "wista-project.duckdns.org",
+    "status": "VERIFIED",
+    "date": "2026-11-19"
   }
 ]
