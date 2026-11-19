@@ -46,5 +46,11 @@
     "domain": "wista-project.duckdns.org",
     "status": "VERIFIED",
     "date": "2026-11-19"
+  },
+  {
+    "id": "M00A9",
+    "domain": "mohsin.taqi.oneapp.dev",
+    "status": "VERIFIED",
+    "date": "2026-11-19"
   }
 ]
