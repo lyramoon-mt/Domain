@@ -4,5 +4,11 @@
     "domain": "avelia.oneapp.dev",
     "status": "VERIFIED",
     "date": "2026-11-19"
+  },
+  {
+    "id": "M00A2",
+    "domain": "sabhi.duckdns.org",
+    "status": "VERIFIED",
+    "date": "2026-11-19"
   }
 ]
