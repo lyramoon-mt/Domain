@@ -1,0 +1,70 @@
+name: Sync Verified Domain Issue to data.json
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  sync-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Update data.json from Issue
+        run: |
+          python3 - <<'EOF'
+          import json, os, re
+          from datetime import datetime, timezone
+
+          title = os.environ.get("ISSUE_TITLE", "")
+          m = re.match(r"^Domain Verify:\s*(.+)$", title.strip(), re.I)
+          if not m:
+              raise SystemExit(0)
+
+          domain = m.group(1).strip().lower().removeprefix("https://").removeprefix("http://").split("/")[0]
+          if not domain or "." not in domain:
+              raise SystemExit(0)
+
+          path = "data.json"
+          data = json.load(open(path, "r", encoding="utf-8")) if os.path.exists(path) else []
+
+          if any(x.get("domain") == domain for x in data):
+              raise SystemExit(0)
+
+          idx = len(data)
+          letter_idx = idx // 9
+          digit = (idx % 9) + 1
+          letters = ""
+          n = letter_idx
+          while True:
+              letters = chr(65 + (n % 26)) + letters
+              n = n // 26 - 1
+              if n < 0:
+                  break
+
+          new_id = f"M00{letters}{digit}"
+          data.append({
+              "id": new_id,
+              "domain": domain,
+              "status": "VERIFIED",
+              "date": datetime.now(timezone.utc).strftime("%Y-%m-%d")
+          })
+
+          with open(path, "w", encoding="utf-8") as f:
+              json.dump(data, f, indent=2)
+          print("Added:", domain, new_id)
+          EOF
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+
+      - name: Commit & Push data.json
+        run: |
+          git config user.name "MKR-IssueBot"
+          git config user.email "issuebot@users.noreply.github.com"
+          git add data.json
+          git diff --staged --quiet || (git commit -m "Add verified domain to data.json" && git push)
