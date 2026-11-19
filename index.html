@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MKR DOMAIN VERIFIED</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050811;
+      --surface: rgba(15, 23, 42, 0.68);
+      --surface-hover: rgba(30, 41, 59, 0.85);
+      --border: rgba(148, 163, 184, 0.18);
+      --cyan: #22d3ee;
+      --emerald: #34d399;
+      --violet: #a78bfa;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(circle at 12% 18%, rgba(34, 211, 238, 0.16), transparent 38%),
+        radial-gradient(circle at 88% 82%, rgba(167, 139, 250, 0.16), transparent 42%),
+        radial-gradient(circle at 50% 0%, rgba(52, 211, 153, 0.1), transparent 45%);
+    }
+
+    .wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3.5rem 1.25rem 5rem;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--emerald);
+      background: rgba(52, 211, 153, 0.1);
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      margin-bottom: 1rem;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--emerald);
+      box-shadow: 0 0 12px var(--emerald);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.45); opacity: 0.45; }
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      background: linear-gradient(120deg, #ffffff 15%, var(--cyan) 55%, var(--emerald) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.65rem;
+    }
+
+    .sub {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .card {
+      background: var(--surface);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      margin-bottom: 2.25rem;
+    }
+
+    .label {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.75rem;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    input {
+      flex: 1;
+      min-width: 230px;
+      padding: 1rem 1.2rem;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(5, 8, 17, 0.75);
+      color: var(--text);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.15);
+    }
+
+    .btn {
+      padding: 1rem 1.75rem;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #041016;
+      background: linear-gradient(135deg, var(--cyan), var(--emerald));
+      transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(34, 211, 238, 0.28);
+    }
+
+    .preview-box {
+      margin-top: 1.25rem;
+      padding: 1rem 1.25rem;
+      border-radius: 14px;
+      background: rgba(5, 8, 17, 0.6);
+      border: 1px dashed rgba(34, 211, 238, 0.35);
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .preview-box.show {
+      display: flex;
+    }
+
+    .id-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--emerald);
+      background: rgba(52, 211, 153, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.35);
+      padding: 6px 12px;
+      border-radius: 10px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 1.15rem;
+      flex-wrap: wrap;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .count {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: rgba(167, 139, 250, 0.16);
+      color: var(--violet);
+      border: 1px solid rgba(167, 139, 250, 0.3);
+    }
+
+    .json-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+
+    .json-btn:hover {
+      color: var(--text);
+      border-color: var(--cyan);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+      gap: 1rem;
+    }
+
+    .item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.2rem;
+      transition: transform 0.2s, border-color 0.2s, background 0.2s;
+    }
+
+    .item:hover {
+      transform: translateY(-3px);
+      border-color: rgba(34, 211, 238, 0.45);
+      background: var(--surface-hover);
+    }
+
+    .item-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+
+    .code {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--cyan);
+      background: rgba(34, 211, 238, 0.12);
+      padding: 4px 10px;
+      border-radius: 8px;
+    }
+
+    .status {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--emerald);
+      background: rgba(52, 211, 153, 0.12);
+      padding: 4px 8px;
+      border-radius: 8px;
+    }
+
+    .status.pending {
+      color: var(--violet);
+      background: rgba(167, 139, 250, 0.14);
+    }
+
+    .domain-txt {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.05rem;
+      font-weight: 700;
+      word-break: break-all;
+      margin-bottom: 0.4rem;
+    }
+
+    .meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 2.25rem 1rem;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <div class="pill"><span class="dot"></span> GitHub Issues + data.json Registry</div>
+      <h1>MKR DOMAIN VERIFIED</h1>
+      <p class="sub">Write your domain below to claim your sequential ID (<strong>M00A1–M00A9</strong>, then <strong>M00B1–M00B9</strong>...) via GitHub Issues into <code>data.json</code>.</p>
+    </header>
+
+    <section class="card">
+      <label class="label" for="domainInput">WRITE YOUR DOMAIN</label>
+      <div class="form-row">
+        <input id="domainInput" type="text" placeholder="example.com" autocomplete="off" />
+        <button class="btn" id="claimBtn" onclick="claimDomain()">Get ID & Submit</button>
+      </div>
+
+      <div class="preview-box" id="previewBox">
+        <div>
+          <div style="font-size: 0.85rem; color: var(--muted);">Generated ID for <strong id="previewDomain" style="color: #fff;"></strong>:</div>
+          <div style="margin-top: 4px;">Your ID: <span class="id-badge" id="previewId">M00A1</span></div>
+        </div>
+        <a id="issueLink" href="#" target="_blank" class="btn" style="text-decoration: none; padding: 0.75rem 1.25rem; font-size: 0.9rem;">
+          Open GitHub Issue →
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div class="section-title">
+          Registered Domains <span class="count" id="totalCount">0</span>
+        </div>
+        <a class="json-btn" href="./data.json" target="_blank">{ } data.json</a>
+      </div>
+      <div class="grid" id="recordsGrid"></div>
+    </section>
+  </main>
+
+  <script>
+    const REPO_OWNER = "laratips44-cpu";
+    const REPO_NAME = "Domain";
+
+    let records = [];
+
+    // Generates M00A1..M00A9, then M00B1..M00B9, then M00C1.. etc.
+    function generateId(index) {
+      const letterIndex = Math.floor(index / 9);
+      const digit = (index % 9) + 1;
+
+      let letters = "";
+      let n = letterIndex;
+      while (true) {
+        letters = String.fromCharCode(65 + (n % 26)) + letters;
+        n = Math.floor(n / 26) - 1;
+        if (n < 0) break;
+      }
+
+      return `M00${letters}${digit}`;
+    }
+
+    function cleanDomain(raw) {
+      return raw
+        .trim()
+        .toLowerCase()
+        .replace(/^https?:\/\//, "")
+        .replace(/\/.*$/, "");
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement("div");
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    async function loadRegistry() {
+      const mergedMap = new Map();
+
+      // 1. Load data.json
+      try {
+        const res = await fetch("./data.json?t=" + Date.now());
+        if (res.ok) {
+          const jsonList = await res.json();
+          if (Array.isArray(jsonList)) {
+            jsonList.forEach(item => {
+              if (item && item.domain) {
+                mergedMap.set(item.domain.toLowerCase(), {
+                  id: item.id,
+                  domain: item.domain.toLowerCase(),
+                  status: item.status || "VERIFIED",
+                  date: item.date || ""
+                });
+              }
+            });
+          }
+        }
+      } catch (e) {
+        console.warn("data.json fetch skipped:", e);
+      }
+
+      // 2. Also read open GitHub Issues matching "Domain Verify:"
+      try {
+        const issuesRes = await fetch(
+          `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues?state=open&per_page=100`
+        );
+        if (issuesRes.ok) {
+          const issues = await issuesRes.json();
+          issues.reverse().forEach(issue => {
+            const match = issue.title && issue.title.match(/^Domain Verify:\s*(.+)$/i);
+            if (match) {
+              const dom = cleanDomain(match[1]);
+              if (dom && !mergedMap.has(dom)) {
+                const nextId = generateId(mergedMap.size);
+                mergedMap.set(dom, {
+                  id: nextId,
+                  domain: dom,
+                  status: "ISSUE PENDING",
+                  date: issue.created_at ? issue.created_at.slice(0, 10) : ""
+                });
+              }
+            }
+          });
+        }
+      } catch (e) {
+        console.warn("GitHub Issues fetch skipped:", e);
+      }
+
+      records = Array.from(mergedMap.values());
+      renderList();
+    }
+
+    function renderList() {
+      const grid = document.getElementById("recordsGrid");
+      const countEl = document.getElementById("totalCount");
+      countEl.textContent = records.length;
+
+      if (!records.length) {
+        grid.innerHTML = `<div class="empty">Koi domain abhi add nahi hua. Pehla ID <strong>M00A1</strong> claim karein!</div>`;
+        return;
+      }
+
+      grid.innerHTML = [...records].reverse().map(r => {
+        const isPending = r.status !== "VERIFIED";
+        return `
+          <article class="item">
+            <div class="item-top">
+              <span class="code">${escapeHtml(r.id)}</span>
+              <span class="status ${isPending ? "pending" : ""}">${escapeHtml(r.status)}</span>
+            </div>
+            <div class="domain-txt">${escapeHtml(r.domain)}</div>
+            <div class="meta">${r.date ? "Added: " + escapeHtml(r.date) : "MKR Registry"}</div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function claimDomain() {
+      const input = document.getElementById("domainInput");
+      const domain = cleanDomain(input.value);
+      if (!domain || !domain.includes(".")) {
+        alert("Please enter a valid domain (e.g. mydomain.com)");
+        return;
+      }
+
+      const existing = records.find(r => r.domain === domain);
+      const assignedId = existing ? existing.id : generateId(records.length);
+
+      const title = encodeURIComponent(`Domain Verify: ${domain}`);
+      const body = encodeURIComponent(
+        `Domain: ${domain}\nRequested ID: ${assignedId}\nStatus: VERIFIED`
+      );
+      const issueUrl = `https://github.com/${REPO_OWNER}/${REPO_NAME}/issues/new?title=${title}&body=${body}`;
+
+      document.getElementById("previewDomain").textContent = domain;
+      document.getElementById("previewId").textContent = assignedId;
+      document.getElementById("issueLink").href = issueUrl;
+      document.getElementById("previewBox").classList.add("show");
+
+      window.open(issueUrl, "_blank");
+    }
+
+    document.getElementById("domainInput").addEventListener("keydown", e => {
+      if (e.key === "Enter") claimDomain();
+    });
+
+    loadRegistry();
+  </script>
+</body>
+</html>
