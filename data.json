@@ -82,5 +82,11 @@
     "domain": "ans.wista-project.duckdns.org",
     "status": "VERIFIED",
     "date": "2026-11-20"
+  },
+  {
+    "id": "M00B6",
+    "domain": "saith.wista-project.duckdns.org",
+    "status": "VERIFIED",
+    "date": "2026-11-20"
   }
 ]
